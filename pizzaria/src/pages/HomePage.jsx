@@ -12,9 +12,6 @@ export const HomePage = () => {
         <SliderComponent/>
         <MainComponent />
         <MenuPizza />
-        <MenuPizza />
-        <MenuPizza />
-
         <FooterComponent/>
     </>
   )
