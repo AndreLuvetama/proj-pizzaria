@@ -1,5 +1,6 @@
 import React from 'react'
 import imgfundo from '../assets/img/fundo.jpg';
+import { NavLink } from 'react-router-dom';
 
 export const RegisterPage = () => {
   return (
@@ -59,7 +60,9 @@ export const RegisterPage = () => {
                       </div>
                   </div>                 
 
-                      <div className='row pt-4  text-wrap-500 hover:text-blue-900'><p><a href='#'>Fazer login</a></p> 
+                      <div className='row pt-4  text-wrap-500 hover:text-blue-900'><p>
+                      <NavLink to="/login" className="nav-link"> Faça o seu login </NavLink>
+                       </p> 
                      <br/>    
                      </div>
 
