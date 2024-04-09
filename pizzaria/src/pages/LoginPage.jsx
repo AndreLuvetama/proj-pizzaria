@@ -1,22 +1,30 @@
 import React, { useState } from 'react'
 import imgfundo from '../assets/img/fundo.jpg';
-
+import { useNavigate } from 'react-router-dom';
+import { loginAPICall, saveLoggedInUser, storeToken } from '../service/AuthService';
 export const LoginPage = () => {
-  const [form, setForm] = useState({nomeUsuario: '', password:''}) 
+  const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const navigator = useNavigate()
+ 
 
-  function saveData(e){
-    const {name, value} = e.target;
+  async function handelLoginForm(e){
+        e.preventDefault();
 
-    setForm({ ... form, [name]: value })
-  }
-
-  function submitForm(e){
-    e.preventDefault()
-    console.log(form)
-
-    setForm({nomeUsuario: '', password: ''})
-
-  }
+     await loginAPICall(username, password).then((response) => {
+            console.log(response.data);
+         
+            const token = 'Bearer ' + response.data.accessToken;
+            const role = response.data.role;
+           
+            storeToken(token);
+            saveLoggedInUser(username, role)
+            navigator("/")
+            window.location.reload(false);
+            }).catch(error => {
+                console.error(error)
+            })
+    }
 
 
   return (
@@ -29,19 +37,19 @@ export const LoginPage = () => {
                 <card className="card-header">
                   <h1 className="text-start font-bold text-lg" >Faça login</h1>
                   <card className="card-body">
-                     <form onSubmit={submitForm}>
+                     <form >
                      <div className="mt-10 grid grid-cols-12 gap-x-6 gap-y-8 sm:grid-cols-12">
                       <div className="col-span-full">
-                        <label htmlFor="nomeUsuario" className="block text-sm font-medium leading-6 text-gray-900">
+                        <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
                           Nome de usuário
                         </label>
                         <div className="mt-2">
                           <input
                             type="text"
-                            name="nomeUsuario"
-                            id="nomeUsuario"
-                            onChange={saveData}
-                            value={form.nomeUsuario}
+                            name="username"
+                            id="username"
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
                             placeholder="Nome do usuário"
                             className="block w-full p-2 rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
@@ -55,8 +63,8 @@ export const LoginPage = () => {
                         <div className="mt-2">
                           <input
                             type="password"
-                            onChange={saveData}
-                            value={form.password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
                             name="password"
                             id="password"
                             placeholder="password"
@@ -71,7 +79,7 @@ export const LoginPage = () => {
                      </div>
 
                      <div class="mt-4 flex items-center justify-center gap-x-6">                                    
-                      <button type="submit" class="w-full rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-lg hover:bg-red-950 focus-visible:outline focus-visible:outline-2 border-b-4 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Acessar</button>
+                      <button onClick={(e) => handelLoginForm(e)} type="submit" class="w-full rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-lg hover:bg-red-950 focus-visible:outline focus-visible:outline-2 border-b-4 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Acessar</button>
                     </div>                      
                     </form>
                   </card>

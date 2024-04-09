@@ -1,19 +1,21 @@
 package com.pizzaria.prosper.dto;
 
+import com.pizzaria.prosper.entity.Role;
 import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Set;
 
 @Getter
 @Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsersDto {
     private Long id;
-    private String nomeUsuario;
+    private String username;
     private String email;
     private String password;
-
+    private Long role;
+    
 }

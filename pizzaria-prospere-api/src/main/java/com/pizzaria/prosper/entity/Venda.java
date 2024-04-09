@@ -1,14 +1,15 @@
 package com.pizzaria.prosper.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tb_venda")
@@ -18,10 +19,16 @@ public class Venda {
     private Long id;
     private Long numeropedido;
     private String description;
+    private Long quantity;
+    @Column
+    @CreatedDate
+    private LocalDate dataVenda;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pizza_id")
     private Pizza pizza;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Users users;
+
+
 }

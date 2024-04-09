@@ -28,6 +28,9 @@ export default function CarrinhoPage (){
       return setPrice(price)
     }
   }
+  function modalPage(){
+    setShowModal(false)
+  }
 
 
   return (
@@ -35,7 +38,7 @@ export default function CarrinhoPage (){
     
 
   <button type="button" className="text-orange-600 hover:text-white border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400
-                         dark:focus:ring-yellow-900" onClick={() => setShowModal(true)}>Pedir agora</button>
+                         dark:focus:ring-yellow-900" onClick={() => setShowModal(true)} >Pedir agora</button>
    {showModal ? (
     <>
 
@@ -43,9 +46,9 @@ export default function CarrinhoPage (){
         className="justify-end flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
       >
         <div className="relative w-auto my-6 mx-auto max-w-3xl">
-          {/*content*/}
+          
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-            {/*header*/}
+        
             <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
               <h3 className="text-3xl font-semibold">
                   Calabresa

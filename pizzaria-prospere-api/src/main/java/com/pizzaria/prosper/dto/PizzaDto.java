@@ -14,5 +14,5 @@ public class PizzaDto {
     private String title;
     private String description;
     private String price;
-    private String ulrImage;
+    private String imageId;
 }

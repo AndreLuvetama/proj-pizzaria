@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import pizza1 from '../../assets/img/pizza-s4.jpg';
 import pizza4 from '../../assets/img/destaques/pizza-4.jpg';
 import pizza6 from '../../assets/img/destaques/pizza-6.png';
 import pizza7 from '../../assets/img/destaques/pizza-7.jpg';
 import CarrinhoPage from '../../pages/CarrinhoPage';
+import { useNavigate, useParams } from 'react-router-dom'
+import { isAdminUser } from '../../service/AuthService';
+import { getAllPizza } from '../../service/PizzaService';
 
 export default function MenuPizza() {
+    const[pizzas, setPizzas] = useState([])
+    const navigate = useNavigate()
+    const {id} = useParams()
+    const isAdmin = isAdminUser();
+    useEffect(() =>{
+        listPizzas();
+    }, [])
+    
+
+    function listPizzas(){
+        getAllPizza().then((response)=>{
+            setPizzas(response.data);
+        }).catch(error =>{
+            console.error(error)
+        })
+    }
+
 
     const data = [
         {id: 1, title: 'Calabresa', description: 'Calabresa com cebola', image: pizza6, price: "R$ 30,00" },
@@ -25,16 +45,16 @@ export default function MenuPizza() {
     <div className="flex justify-center space-x-2 m-4 flex-wrap ">      
         
 
-    { data.map((item) =>(
+    { pizzas.map((item) =>(
             <div className='bg-white divMenu'  >             
                     <a href="#" key={item.id} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700" >
-                    <img className="object-cover w-full rounded-t-lg h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={item.image} alt="" />
+                    <img className="object-cover w-full rounded-t-lg h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={item.imageId} alt={item.imageId} />
                     <div className="flex flex-col justify-center pr-2 pl-2 leading-normal">
                         <span className="mb-2 text-sm tracking-tight text-orange-700 dark:text-white">{item.title}</span>
                         <p className="mb-2 font-normal text-sm text-gray-950 dark:text-gray-400">{item.description}</p>
                         <br/>
                         <span className='text-start'>{item.price}</span> 
-                        <CarrinhoPage/>
+                        <CarrinhoPage  />
                         
                     </div>
                    </a>              

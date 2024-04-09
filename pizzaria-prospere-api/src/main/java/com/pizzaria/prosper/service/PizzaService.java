@@ -9,6 +9,7 @@ public interface PizzaService {
     PizzaDto createPizza(PizzaDto pizzaDto);
     PizzaDto getPizzaById(Long id);
     List<PizzaDto> getAllPizza();
+    List<PizzaDto> getAllPizzaWimages();
     PizzaDto updatePizza(Long pizzaId, PizzaDto pizzaDto);
     void deletePizza(Long pizzaId);
 }
