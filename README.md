@@ -44,6 +44,9 @@ services:
       - POSTGRES_PASSWORD=111111
     ports:
       - 5435:5432
+      
+      Comando doker
+      docker run --name db_pizza -p 5432:5432 -e POSTGRES_DB=db_pizza -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=123456 postgres:11
 
   <h3>Apresentação do Layout</h3>
 
