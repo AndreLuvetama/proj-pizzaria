@@ -24,6 +24,27 @@ Funcionalidade: Login
 - https://pixabay.com/pt/ (Download de imagens)
 - Git/ GitHub
 
+- <h2>Scrum</h2>
+A ultização do Scrum poderia ser ultilizado para o monitoramento do time, neste caso o time poderia ter uma reunião de 15 minutos todos os dias no
+início do trabalho. Nessa reunião poderiam abordar o estatdo de cada atividade, as dificuldades e os avanços.
+
+<h2>Docker</h2>
+1. Criar o arquivo docker-compose.yml por onde será configurado as portas, os bancos e os ambientes que será usado
+ Exemplo:
+version: "3"
+services:
+
+  auth-db:
+    image: postgres:11
+    container_name: auth-db
+    restart: always
+    environment:
+      - POSTGRES_DB=auth-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=111111
+    ports:
+      - 5435:5432
+
   <h3>Apresentação do Layout</h3>
 
 ![image](https://github.com/AndreLuvetama/proj-pizzaria/assets/8740271/fdd7f0e3-18b4-4390-8e04-93c1157f9846)
