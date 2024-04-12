@@ -1,6 +1,7 @@
 package com.pizzaria.prosper.mapper;
 
 
+import com.pizzaria.prosper.dto.ImagesDto;
 import com.pizzaria.prosper.entity.Images;
 import com.pizzaria.prosper.enuns.ImageExtension;
 import org.springframework.http.MediaType;
@@ -19,6 +20,17 @@ public class ImageMapper {
                 size(file.getSize()).
                 extension(ImageExtension.valueOf(MediaType.valueOf(file.getContentType()))).
                 file(file.getBytes()).
+                build();
+
+    }
+
+    public ImagesDto imagesToDto(Images images, String url){
+        return ImagesDto.builder().
+                url(url).
+                extension(images.getExtension().name()).
+                name(images.getName()).
+                size(images.getSize()).
+                uploadDate(images.getUploadDate()).
                 build();
 
     }

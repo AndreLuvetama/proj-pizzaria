@@ -13,6 +13,8 @@ public class PizzaDto {
     private Long id;
     private String title;
     private String description;
-    private String price;
-    private String imageId;
+    private double price;
+    private String file;
+
+
 }

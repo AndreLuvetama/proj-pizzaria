@@ -30,3 +30,33 @@ Uma Semana depois de terminar todas as sprints
 Cada Sprint tem 15 dias
 
 https://github.com/AndreLuvetama/proj-pizzaria
+
+
+
+==> Finalizar o upload das imagens
+==> Colocar o Reduz nas páginas
+==> Finalizar a compra da pizza
+
+
+
+Scrum
+A ultização do Scrum poderia ser ultilizado para o monitoramento do time, neste caso o time poderia ter uma reunião de 15 minutos todos os dias no
+início do trabalho. Nessa reunião poderiam abordar o estatdo de cada atividade, as dificuldades e os avanços.
+
+Docker
+1. Criar o arquivo docker-compose.yml por onde será configurado as portas, os bancos e os ambientes que será usado
+ Exemplo:
+version: "3"
+services:
+
+  auth-db:
+    image: postgres:11
+    container_name: auth-db
+    restart: always
+    environment:
+      - POSTGRES_DB=auth-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=111111
+    ports:
+      - 5435:5432
+

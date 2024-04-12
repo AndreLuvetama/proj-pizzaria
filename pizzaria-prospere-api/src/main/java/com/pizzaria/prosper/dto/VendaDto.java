@@ -15,7 +15,7 @@ public class VendaDto {
     private Long id;
     private Long numeropedido;
     private String description;
-    private Long quantity;
+    private double qtdTotal;
     private Long pizzaId;
     private Long usersId;
 

@@ -1,6 +1,7 @@
 package com.pizzaria.prosper.controller;
 
 
+import com.pizzaria.prosper.dto.ImagesDto;
 import com.pizzaria.prosper.entity.Images;
 import com.pizzaria.prosper.mapper.ImageMapper;
 import com.pizzaria.prosper.service.ImagesService;
@@ -30,13 +31,14 @@ public class ImagesController {
 
     @PostMapping
     public ResponseEntity uploadImage(@RequestParam("file") MultipartFile file,
-                                         @RequestParam("name") String name,
-                                         @RequestParam("tags") List<String> tags) throws IOException {
+                                      @RequestParam("name") String name,
+                                      @RequestParam("tags") List<String> tags) throws IOException {
 
 
         log.info("Imagem recebida: name: {}, size: {}", file.getOriginalFilename(), file.getSize());
         log.info("Nome definido para a imagem: name: {}", name);
         log.info("Tags: name: {}", tags);
+
         Images images = mapper.mapToImages(file, name, tags);
 
 
@@ -70,3 +72,6 @@ public class ImagesController {
 
 
 }
+
+
+

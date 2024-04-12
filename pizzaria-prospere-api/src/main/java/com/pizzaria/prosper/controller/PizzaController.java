@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -18,14 +19,20 @@ public class PizzaController {
     private PizzaService pizzaService;
 
     @PostMapping
-    public ResponseEntity<PizzaDto> insertUser(@RequestBody PizzaDto pizzaDto){
-        PizzaDto insert = pizzaService.createPizza(pizzaDto);
+    public ResponseEntity<PizzaDto> insertUser(@RequestParam("file") MultipartFile file,
+                                               @RequestParam String title,
+                                               @RequestParam String description,
+                                               @RequestParam double price){
+
+        PizzaDto insert = pizzaService.createPizza(file,  description, price, title);
+
         return new ResponseEntity<>(insert, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<PizzaDto>> getAllPizza(){
         List<PizzaDto> pizzaDtos = pizzaService.getAllPizza();
+
         return ResponseEntity.ok(pizzaDtos);
     }
 

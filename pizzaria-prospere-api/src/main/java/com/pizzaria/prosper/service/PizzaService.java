@@ -2,11 +2,12 @@ package com.pizzaria.prosper.service;
 
 import com.pizzaria.prosper.dto.PizzaDto;
 import com.pizzaria.prosper.dto.UsersDto;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface PizzaService {
-    PizzaDto createPizza(PizzaDto pizzaDto);
+    PizzaDto createPizza(MultipartFile file, String description, double price, String name);
     PizzaDto getPizzaById(Long id);
     List<PizzaDto> getAllPizza();
     List<PizzaDto> getAllPizzaWimages();

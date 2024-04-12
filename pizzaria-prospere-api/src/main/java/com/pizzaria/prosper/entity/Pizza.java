@@ -19,11 +19,13 @@ public class Pizza {
     private Long id;
     private String title;
     private String description;
-    private String price;
+    private double price;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "images_id", referencedColumnName = "id")
-    private Images imagesId;
+    //@OneToOne(cascade = CascadeType.ALL)
+   // @JoinColumn(name = "images_id", referencedColumnName = "id")
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String file;
 
 
 

@@ -19,7 +19,7 @@ public class Venda {
     private Long id;
     private Long numeropedido;
     private String description;
-    private Long quantity;
+    private double qtdTotal;
     @Column
     @CreatedDate
     private LocalDate dataVenda;

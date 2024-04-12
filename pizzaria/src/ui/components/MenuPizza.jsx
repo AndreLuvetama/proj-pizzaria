@@ -48,13 +48,14 @@ export default function MenuPizza() {
     { pizzas.map((item) =>(
             <div className='bg-white divMenu'  >             
                     <a href="#" key={item.id} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700" >
-                    <img className="object-cover w-full rounded-t-lg h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={item.imageId} alt={item.imageId} />
+                    <img className="object-cover w-full rounded-t-lg h-60 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={`data:image/jpeg;base64, ${item.file}`} alt={item.title} />
+                    
                     <div className="flex flex-col justify-center pr-2 pl-2 leading-normal">
                         <span className="mb-2 text-sm tracking-tight text-orange-700 dark:text-white">{item.title}</span>
                         <p className="mb-2 font-normal text-sm text-gray-950 dark:text-gray-400">{item.description}</p>
                         <br/>
                         <span className='text-start'>{item.price}</span> 
-                        <CarrinhoPage  />
+                        <CarrinhoPage id={item.id} />
                         
                     </div>
                    </a>              

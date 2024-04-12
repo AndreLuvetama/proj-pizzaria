@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 @Service
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class ImagesServiceImpl implements ImagesService {
     @Autowired
     private ImagesRepository imageRepository;
+    private final Path root = Paths.get("/v1/api/pizza/images");
 
 
     @Override
@@ -28,4 +31,6 @@ public class ImagesServiceImpl implements ImagesService {
     public Optional<Images> getById(String id) {
         return imageRepository.findById(id);
     }
+
+
 }
