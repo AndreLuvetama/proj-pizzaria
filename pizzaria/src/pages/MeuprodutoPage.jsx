@@ -28,11 +28,13 @@ export const MeuprodutoPage = () => {
   return (
     <>
         <HeaderCompnent/>
-
+           <div className="flex items-center p-10 align-middle">   <h1 className='text-center text-3xl'>Carrinho de compra</h1> </div>
             <main className='flex flex-row space-y-12 w-screen  p-10 font-medium'>
+            
                <form>
                { listaArray.map((item, index) => (                    
-                        <div className='flex flex-row gap-4 justify-between' key={index} >                       
+                        <div className='flex flex-row gap-4 justify-between' key={index} >    
+                                      
                         <div className="basis-1/3 ">   
                             <div className="flex divMenu items-center ">
                                 <img src ={pizza7} className='' />
