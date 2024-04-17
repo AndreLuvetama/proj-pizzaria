@@ -19,16 +19,19 @@ public class Venda {
     private Long id;
     private Long numeropedido;
     private String description;
+    private double price;
     private double qtdTotal;
     @Column
     @CreatedDate
     private LocalDate dataVenda;
+    private Long quantity;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pizza_id")
     private Pizza pizza;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Users users;
+
 
 
 }

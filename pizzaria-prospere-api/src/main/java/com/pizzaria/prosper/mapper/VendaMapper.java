@@ -14,7 +14,11 @@ public class VendaMapper {
                         venda.getDescription(),
                 venda.getQtdTotal(),
                 venda.getPizza().getId(),
-                venda.getUsers().getId()
+                venda.getUsers().getId(),
+                venda.getQuantity(),
+                venda.getPrice(),
+                venda.getDataVenda()
+
 
                 );
     }

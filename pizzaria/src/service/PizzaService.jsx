@@ -21,7 +21,7 @@ export const getPizzaById = (id) => axios.get(BASE_REST_API_URL + '/' + id);
 export const insertImage = () => axios.post(BASE_REST_API_URL + '/images');
 export const getImageById = (id) => axios.get(BASE_REST_API_URL + '/images/' + id);
 
-export const createVenda = (venda) => axios.post(BASE_REST_API_URL + '/' + venda);
+export const createVenda = (venda) => axios.post(BASE_REST_API_URL + '/venda', venda);
 
 
 

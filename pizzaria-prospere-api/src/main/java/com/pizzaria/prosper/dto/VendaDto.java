@@ -16,8 +16,11 @@ public class VendaDto {
     private Long numeropedido;
     private String description;
     private double qtdTotal;
+    private Long quantity;
     private Long pizzaId;
     private Long usersId;
+    private double price;
+    private LocalDate dataVenda;
 
 
 }

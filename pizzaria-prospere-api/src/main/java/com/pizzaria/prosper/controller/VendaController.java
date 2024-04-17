@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @AllArgsConstructor
 @RestController
-@RequestMapping("/v1/api/venda")
+@RequestMapping("/v1/api/pizza/venda")
 public class VendaController {
     private VendaService vendaService;
 
